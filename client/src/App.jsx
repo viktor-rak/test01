@@ -15,7 +15,7 @@ const initList = [
 ]
 
 function App() {
-  const [list, setList] = useState(initList)
+  const [list, setList] = useState([])
   
   
 
@@ -43,7 +43,9 @@ function Form({list, setList}) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    setList([...list, {name, description}])
+    const defaultName = name.trim() === '' ? 'Untitled' : name
+    const defaultDescription = description.trim() === '' ? 'No Desc.' : description
+    setList([...list, {name: defaultName, description: defaultDescription}])
     setName('')
     setDesc('')
   }
